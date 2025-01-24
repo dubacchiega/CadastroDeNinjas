@@ -33,6 +33,8 @@ public class NinjaModel {
     @JoinColumn(name = "missoes_id") // Foreing Key ou chave estrangeira. Quem contem a FK é a dona do relacionamento
     private MissoesModel missoes;
 
+    @Column(name = "img_url")
+    private String imgUrl;
 }
 
 
