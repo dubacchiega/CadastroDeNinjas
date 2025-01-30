@@ -1,15 +1,17 @@
 package br.com.bacchiega.CadastroDeNinjas.Ninjas;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+
+import javax.swing.*;
+import java.util.List;
 
 @RestController
 @RequestMapping("/ninjas")
 public class NinjaController {
 
-    @GetMapping("/boasvindas")
-    public String boasVindas(){
-        return "Essa é minha primeira mensagem nessa rota";
-    }
+    @Autowired
+    private NinjaService ninjaService;
 
     // Adicionar ninja
     @PostMapping("/criar")
@@ -19,8 +21,8 @@ public class NinjaController {
 
     // Mostrar todos os ninjas
     @GetMapping("/listar")
-    public String mostrarTodosOsNinjas(){
-        return "Mostrar Ninja";
+    public List<NinjaModel> listarNinjas(){
+        return ninjaService.listarNinjas();
     }
 
     // Mostrar ninja por id
