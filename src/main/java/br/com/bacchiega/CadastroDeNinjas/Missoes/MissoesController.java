@@ -1,14 +1,20 @@
 package br.com.bacchiega.CadastroDeNinjas.Missoes;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/missoes")
 public class MissoesController {
 
+    @Autowired
+    MissoesService missoesService;
+
     @GetMapping("/listar")
-    public String listarMissao(){
-        return "Missoes listadas com sucesso";
+    public List<MissoesModel> listarMissao(){
+        return missoesService.listarMissoes();
     }
 
     @PostMapping("/criar")
