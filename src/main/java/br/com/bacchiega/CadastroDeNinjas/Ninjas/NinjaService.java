@@ -22,4 +22,8 @@ public class NinjaService  {
         return ninjaPorId.orElse(null); // orElse(null) se não existir, retorna null
     }
 
+    public NinjaModel criarNinja(NinjaModel ninja){
+        return ninjaRepository.save(ninja);
+    }
+
 }
