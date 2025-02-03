@@ -17,9 +17,14 @@ public class MissoesController {
         return missoesService.listarMissoes();
     }
 
+    @GetMapping("/listar/{id}")
+    public MissoesModel listarMissaoPorId(@PathVariable Long id){
+        return missoesService.listarMissoesPorId(id);
+    }
+
     @PostMapping("/criar")
-    public String criarMissao(){
-        return "Missao criada com sucesso";
+    public MissoesModel criarMissao(@RequestBody MissoesModel missoes){
+        return missoesService.criarMissao(missoes);
     }
 
     @PutMapping("/alterar")
@@ -27,8 +32,8 @@ public class MissoesController {
         return "Missao alterada com sucesso";
     }
 
-    @DeleteMapping("/deletar")
-    public String deletarMissao(){
-        return "Missao deletada com sucesso";
+    @DeleteMapping("/deletar/{id}")
+    public void deletarMissao(@PathVariable Long id){
+        missoesService.deletarMissao(id);
     }
 }
