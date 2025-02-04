@@ -12,6 +12,9 @@ public class NinjaService  {
     @Autowired
     private NinjaRepository ninjaRepository;
 
+    @Autowired
+    private NinjaMapper ninjaMapper;
+
     // Listar todos os ninjas
     public List<NinjaModel> listarNinjas(){
         return ninjaRepository.findAll();
@@ -22,8 +25,10 @@ public class NinjaService  {
         return ninjaPorId.orElse(null); // orElse(null) se não existir, retorna null
     }
 
-    public NinjaModel criarNinja(NinjaModel ninja){
-        return ninjaRepository.save(ninja);
+    public NinjaDTO criarNinja(NinjaDTO ninjaDTO){
+        NinjaModel ninja = ninjaMapper.map(ninjaDTO);
+        ninja = ninjaRepository.save(ninja);
+        return ninjaMapper.map(ninja);
     }
 
     public void deletarNinjaPorId(Long id){
