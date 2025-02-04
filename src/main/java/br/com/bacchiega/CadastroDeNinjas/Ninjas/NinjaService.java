@@ -30,4 +30,11 @@ public class NinjaService  {
         ninjaRepository.deleteById(id);
     }
 
+    public NinjaModel atualizarNinja(Long id, NinjaModel ninjaAtualizado){
+        NinjaModel ninjaAntigo = ninjaRepository.findById(id).orElse(null);
+        ninjaAntigo.setNome(ninjaAtualizado.getNome());
+        ninjaAntigo.setEmail(ninjaAtualizado.getEmail());
+    }
+
+
 }
