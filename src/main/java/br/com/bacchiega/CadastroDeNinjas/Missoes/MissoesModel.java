@@ -26,6 +26,8 @@ public class MissoesModel {
 
     private String rank;
 
+    private String dificuldade;
+
     // @OneToMany -> Uma missão pode ter vários ninjas
     // Uma missão para muitos ninjas
     @OneToMany(mappedBy = "missoes") // mapeando para a coluna missoes
